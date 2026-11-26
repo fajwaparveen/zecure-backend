@@ -5,6 +5,7 @@ Django backend and machine learning model for Zecure, a final-year team project 
 ## What it does
 - Trains a neural network on the NSL-KDD dataset to classify network traffic as normal or as a specific attack type
 - Captures live network packets with Scapy, extracts features from each one, and predicts whether it is normal or an attack
+- Blocks the source IP of a detected attack by adding a Windows Firewall rule (netsh advfirewall)
 - Provides a Django website with separate admin and expert sections
 - Stores users, complaints, replies, logs and requests in a MySQL database
 
@@ -32,8 +33,7 @@ Django backend and machine learning model for Zecure, a final-year team project 
 - MySQL
 
 ## Running it locally
-1. Install the dependencies: Django, mysql-connector-python, mysqlclient, TensorFlow, scikit-learn, pandas, NumPy and joblib.On 
-   Windows, packet capture also needs Npcap, and the script must run with administrator rights
+1. Install the dependencies: Django, mysql-connector-python, mysqlclient, TensorFlow, scikit-learn, pandas, NumPy and joblib.Packet capture needs Windows with Npcap installed, and the script must run as administrator so it can add firewall rules.
 2. Create a MySQL database named `IDPS`.
 3. Set these environment variables: `DB_USER`, `DB_PASSWORD`, `DB_NAME` (default `IDPS`), `DB_HOST` (default `localhost`) and 
    `DJANGO_SECRET_KEY`.
