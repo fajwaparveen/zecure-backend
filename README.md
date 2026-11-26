@@ -4,6 +4,7 @@ Django backend and machine learning model for Zecure, a final-year team project 
 
 ## What it does
 - Trains a neural network on the NSL-KDD dataset to classify network traffic as normal or as a specific attack type
+- Captures live network packets with Scapy, extracts features from each one, and predicts whether it is normal or an attack
 - Provides a Django website with separate admin and expert sections
 - Stores users, complaints, replies, logs and requests in a MySQL database
 
@@ -26,14 +27,16 @@ Django backend and machine learning model for Zecure, a final-year team project 
 - Expert: add, edit and view videos, view requests (approved and rejected), view profile, change password
 
 ## Tech used
-- Python, Django
+- Python, Django, Scapy
 - TensorFlow/Keras, scikit-learn, pandas, NumPy
 - MySQL
 
 ## Running it locally
-1. Install the dependencies: Django, mysql-connector-python, mysqlclient, TensorFlow, scikit-learn, pandas, NumPy and joblib.
+1. Install the dependencies: Django, mysql-connector-python, mysqlclient, TensorFlow, scikit-learn, pandas, NumPy and joblib.On 
+   Windows, packet capture also needs Npcap, and the script must run with administrator rights
 2. Create a MySQL database named `IDPS`.
-3. Set these environment variables: `DB_USER`, `DB_PASSWORD`, `DB_NAME` (default `IDPS`), `DB_HOST` (default `localhost`) and `DJANGO_SECRET_KEY`.
+3. Set these environment variables: `DB_USER`, `DB_PASSWORD`, `DB_NAME` (default `IDPS`), `DB_HOST` (default `localhost`) and 
+   `DJANGO_SECRET_KEY`.
 4. Download the NSL-KDD file `KDDTrain+.csv` and place it in `MyApp` if you want to retrain the model.
 5. Run `python manage.py migrate`, then `python manage.py runserver`.
 
